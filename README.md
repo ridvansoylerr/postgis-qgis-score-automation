@@ -45,6 +45,7 @@ SQL Daily KM Calculation
 ODBC / Power Query
         ↓
 Excel Score Dashboard
+
 ## How to Use
 
 This repository is a template project. To use it with your own GIS data, you need to update the sample table names, column names, user IDs and ODBC connection name according to your own PostGIS database.
