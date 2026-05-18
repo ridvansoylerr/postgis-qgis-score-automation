@@ -45,6 +45,7 @@ SQL Daily KM Calculation
 ODBC / Power Query
         ↓
 Excel Score Dashboard
+```
 
 ## How to Use
 
@@ -228,3 +229,13 @@ GRANT SELECT ON sample_schema.road_marking_line_table TO reporting_user;
 ```
 
 This helps prevent accidental changes to production GIS data.
+
+## Security Note
+
+This repository does not include real database credentials, real company data, server addresses or production connection details.
+
+All table names, schema names, user IDs and values are anonymized for portfolio and demonstration purposes.
+
+## License
+
+This project is licensed under the MIT License.
