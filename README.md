@@ -136,7 +136,7 @@ This DSN name will be used inside the Power Query script.
 Open the Power Query file:
 
 ```text
-powerquery/excel_powerquery_score.m
+powerquery/excel_powerquery_score.pq
 ```
 
 Find this line:
@@ -170,7 +170,7 @@ Advanced Editor
 Paste the Power Query code from:
 
 ```text
-powerquery/excel_powerquery_score.m
+powerquery/excel_powerquery_score.pq
 ```
 
 Then click:
