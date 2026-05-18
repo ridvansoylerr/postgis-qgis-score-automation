@@ -1,0 +1,40 @@
+let
+    SQL = Text.Combine({
+        "WITH data AS (",
+        "    SELECT",
+        "        digitized_date::date AS report_date,",
+        "        user_id::text AS user_id,",
+        "        'tracking_line_layer' AS source_layer,",
+        "        ST_Length(geom::geography) / 1000 AS km",
+        "    FROM sample_schema.tracking_line_table",
+        "    WHERE user_id IN (1, 2)",
+        "      AND digitized_date IS NOT NULL",
+        "",
+        "    UNION ALL",
+        "",
+        "    SELECT",
+        "        created_date::date AS report_date,",
+        "        created_by::text AS user_id,",
+        "        'road_marking_line_layer' AS source_layer,",
+        "        ST_Length(geom::geography) / 1000 AS km",
+        "    FROM sample_schema.road_marking_line_table",
+        "    WHERE created_by IN (1001, 1002)",
+        "      AND created_date IS NOT NULL",
+        ")",
+        "",
+        "SELECT",
+        "    report_date,",
+        "    ROUND(SUM(CASE WHEN source_layer = 'tracking_line_layer' AND user_id = '1' THEN km ELSE 0 END)::numeric, 2) AS user_a_km,",
+        "    ROUND(SUM(CASE WHEN source_layer = 'road_marking_line_layer' AND user_id = '1001' THEN km ELSE 0 END)::numeric, 2) AS user_a_drawing,",
+        "    ROUND(SUM(CASE WHEN source_layer = 'tracking_line_layer' AND user_id = '2' THEN km ELSE 0 END)::numeric, 2) AS user_b_km,",
+        "    ROUND(SUM(CASE WHEN source_layer = 'road_marking_line_layer' AND user_id = '1002' THEN km ELSE 0 END)::numeric, 2) AS user_b_drawing,",
+        "    ROUND(SUM(CASE WHEN source_layer = 'tracking_line_layer' THEN km ELSE 0 END)::numeric, 2) AS total_km,",
+        "    ROUND(SUM(CASE WHEN source_layer = 'road_marking_line_layer' THEN km ELSE 0 END)::numeric, 2) AS total_drawing",
+        "FROM data",
+        "GROUP BY report_date",
+        "ORDER BY report_date ASC;"
+    }, "#(lf)"),
+
+    Source = Odbc.Query("dsn=your_odbc_dsn_name", SQL)
+in
+    Source
