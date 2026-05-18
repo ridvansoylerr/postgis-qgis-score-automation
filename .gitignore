@@ -224,8 +224,3 @@ __marimo__/
 credentials.json
 token.json
 secrets.json
-
-# Excel temporary files
-~$*.xlsx
-~$*.xlsm
-~$*.xls
