@@ -216,3 +216,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Credentials and local configuration
+*.ini
+*.config
+*.conf
+credentials.json
+token.json
+secrets.json
+
+# Excel temporary files
+~$*.xlsx
+~$*.xlsm
+~$*.xls
