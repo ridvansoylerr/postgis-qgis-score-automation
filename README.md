@@ -1,2 +1,2 @@
 # postgis-qgis-score-automation
-QGIS/PostGIS based automated GIS production score reporting workflow
+Automated GIS production score reporting workflow using QGIS, PostGIS, SQL and Excel Power Query.
